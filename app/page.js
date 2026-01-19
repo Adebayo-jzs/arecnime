@@ -1,5 +1,6 @@
 "use client"
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect,useState } from "react";
 export default  function Home() {
   const [animeList,setAnimeList] = useState([]);
@@ -19,9 +20,9 @@ export default  function Home() {
     <div className="flex min-h-screen items-center justify-center bg-black font-sans  ">
       <main className="max-w-9xl min-h-screen w-full   items-center justify-between py-32 px-16  sm:items-start">
          <h2 className="text-4xl md:text-5xl  mb-7 font-black tracking-tight flex items-center gap-4 text-white">
-            Top Anime <span className="text-xs md:text-base font-bold text-white/50 tracking-widest uppercase mt-2">/ 01</span>
+            Top {animeList.length} Anime <span className="text-xs md:text-base font-bold text-white/50 tracking-widest uppercase mt-2">/ 01</span>
           </h2>
-          <div className="grid grid-cols-3 gap-7"> 
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7"> 
           {animeList.map(anime => (
             // <div key={anime.mal_id} className="w-full bg-[#1c2029]">
             //   <img src={anime.images.jpg.large_image_url}  />
@@ -31,7 +32,7 @@ export default  function Home() {
             // </div>
             // <div className="w-full snap-center" key={anime.mal_id}>
              
-              <div className="relative overflow-hidden aspect-[4/5] bg-neutral-900 group mb-6 border border-white/10 rounded-sm">
+              <div className="relative overflow-hidden aspect-[4/5] bg-neutral-900 group mb-6 border border-white/10 rounded-sm" key={anime.mal_id}>
                 
                 {/* Image */}
                 <img
@@ -43,12 +44,12 @@ export default  function Home() {
                 />
 
                 {/* Dark overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent group-hover:opacity-80 group-hover:backdrop-blur-sm" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent pointer-events-none group-hover:opacity-80 group-hover:backdrop-blur-sm" />
                 <div className="absolute bottom-6 left-6 md:bottom-10 md:left-10 pr-6 transition-all">
                   
-                  <h3 className="text-3xl transition-all md:text-4xl font-black text-white uppercase tracking-tighter leading-none">
+                  <h2 className="text-3xl transition-all md:text-4xl font-black text-white uppercase tracking-tighter leading-none">
                     {anime.title}
-                  </h3>
+                  </h2>
                   <p className="
                       translate-y-8 group-hover:translate-y-0
                       transition-transform duration-500 text-[#939393]
@@ -57,13 +58,30 @@ export default  function Home() {
                       {anime.synopsis}
                   </p>
                   <div className="flex gap-4 mt-4">
-                      <a
-                        href={anime.trailer.url}
+                      {/* <a
+                        href={anime.trailer.embed_url}
                         target="_blank"
                         className="inline-block py-3 px-6 border-2 border-white text-xs text-white font-black uppercase tracking-widest
                           hover:bg-white hover:text-black transition-all"
                       >
                         Trailer
+                      </a> */}
+                      <a
+                        href={anime.url}
+                        target="_blank"
+                        className="inline-block py-3 px-6 border-2 border-white text-xs text-white font-black uppercase tracking-widest
+                          hover:bg-white hover:text-black transition-all"
+                      >
+                        View on AnimeList
+                      </a>
+                      <a
+                        href={`https://aniwatchtv.to/search?keyword=${encodeURIComponent(anime.title)}`}
+                        // href={`https://www.crunchyroll.com/search?from=search&q=${encodeURIComponent(anime.title)}`}
+                        target="_blank"
+                        className="inline-block py-3 px-6 border-2 border-white text-xs text-white font-black uppercase tracking-widest
+                          hover:bg-white hover:text-black transition-all"
+                      >
+                        crunchyroll
                       </a>
 
                       {/* {code && (

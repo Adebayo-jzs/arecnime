@@ -1,19 +1,22 @@
-"use client"
+// "use client"
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect,useState } from "react";
-export default  function Home() {
-  const [animeList,setAnimeList] = useState([]);
+// import { useEffect,useState } from "react";
+export default  async function Home() {
+  // const [animeList,setAnimeList] = useState([]);
 
-  useEffect(() => {
-  fetch("https://api.jikan.moe/v4/top/anime")
-    .then(res => res.json())
-    .then(data => {
-      console.log(data.data);
-      setAnimeList(data.data);
-    });
+  // useEffect(() => {
+  // fetch("https://api.jikan.moe/v4/top/anime")
+  //   .then(res => res.json())
+  //   .then(data => {
+  //     console.log(data.data);
+  //     setAnimeList(data.data);
+  //   });
     
-  }, []);
+  // }, []);
+  const res = await fetch("https://api.jikan.moe/v4/top/anime");
+  const data = await res.json();
+  const animeList = data.data;
    
 
   return (

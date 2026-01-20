@@ -60,7 +60,7 @@ export default  async function Home() {
                   <p className="
                       translate-y-8 group-hover:translate-y-0
                       transition-transform duration-500 text-[#939393]
-                      text-sm md:text-base leading-relaxed my-6 max-w-md 
+                      text-sm md:text-base line-clamp-5 leading-relaxed my-6 max-w-md 
                       opacity-0 group-hover:opacity-100 absolute group-hover:relative">
                       {anime.synopsis}
                   </p>

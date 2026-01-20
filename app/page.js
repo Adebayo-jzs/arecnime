@@ -18,7 +18,7 @@ export default  async function Home() {
   const res = await fetch("https://api.jikan.moe/v4/top/anime");
   const data = await res.json();
   const animeList = data.data;
-  console.log(animeList);
+  // console.log(animeList);
   
    
 

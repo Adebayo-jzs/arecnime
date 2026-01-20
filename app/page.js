@@ -18,14 +18,14 @@ export default  async function Home() {
   const res = await fetch("https://api.jikan.moe/v4/top/anime");
   const data = await res.json();
   const animeList = data.data;
-  // console.log(animeList);
+  console.log(animeList);
   
    
 
   return (
     <div className="flex flex-col min-h-screen items-center justify-center bg-black font-sans  ">
       <HeroCarousel animeList={animeList}/>
-      <main className="max-w-9xl min-h-screen w-full   items-center justify-between py-32 px-16  sm:items-start">
+      <main className="max-w-9xl min-h-screen w-full   items-center justify-between py-32 px-5 md:px-16  sm:items-start">
          <h2 className="text-4xl md:text-5xl  mb-7 font-black tracking-tight flex items-center gap-4 text-white">
             Top {animeList.length} Anime <span className="text-xs md:text-base font-bold text-white/50 tracking-widest uppercase mt-2">/ 01</span>
           </h2>
@@ -65,31 +65,31 @@ export default  async function Home() {
                       {anime.synopsis}
                   </p>
                   <div className="flex gap-4 mt-4">
-                      {/* <a
-                        href={anime.trailer.embed_url}
+                      <a
+                        href={`/anime/${anime.mal_id}`}
                         target="_blank"
                         className="inline-block py-3 px-6 border-2 border-white text-xs text-white font-black uppercase tracking-widest
                           hover:bg-white hover:text-black transition-all"
                       >
-                        Trailer
-                      </a> */}
-                      <a
+                        details
+                      </a>
+                      {/* <a
                         href={anime.url}
                         target="_blank"
                         className="inline-block py-3 px-6 border-2 border-white text-xs text-white font-black uppercase tracking-widest
                           hover:bg-white hover:text-black transition-all"
                       >
                         View on AnimeList
-                      </a>
-                      <a
+                      </a> */}
+                      {/* <a
                         href={`https://aniwatchtv.to/search?keyword=${encodeURIComponent(anime.title)}`}
                         // href={`https://www.crunchyroll.com/search?from=search&q=${encodeURIComponent(anime.title)}`}
                         target="_blank"
                         className="inline-block py-3 px-6 border-2 border-white text-xs text-white font-black uppercase tracking-widest
                           hover:bg-white hover:text-black transition-all"
                       >
-                        crunchyroll
-                      </a>
+                        watch
+                      </a> */}
 
                       {/* {code && (
                         <a

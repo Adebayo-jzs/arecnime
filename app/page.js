@@ -1,6 +1,7 @@
 // "use client"
 import Image from "next/image";
 import Link from "next/link";
+import HeroCarousel from "@/components/HeroCarousel";
 // import { useEffect,useState } from "react";
 export default  async function Home() {
   // const [animeList,setAnimeList] = useState([]);
@@ -17,10 +18,13 @@ export default  async function Home() {
   const res = await fetch("https://api.jikan.moe/v4/top/anime");
   const data = await res.json();
   const animeList = data.data;
+  // console.log(animeList);
+  
    
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-black font-sans  ">
+    <div className="flex flex-col min-h-screen items-center justify-center bg-black font-sans  ">
+      <HeroCarousel animeList={animeList}/>
       <main className="max-w-9xl min-h-screen w-full   items-center justify-between py-32 px-16  sm:items-start">
          <h2 className="text-4xl md:text-5xl  mb-7 font-black tracking-tight flex items-center gap-4 text-white">
             Top {animeList.length} Anime <span className="text-xs md:text-base font-bold text-white/50 tracking-widest uppercase mt-2">/ 01</span>

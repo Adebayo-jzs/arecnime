@@ -159,14 +159,55 @@ export default function AnimeDetails({ anime,streaming,animenews }) {
             
             <motion.div variants={itemVariants} className="mt-8">
               <h3 className="text-xl font-bold mb-4">News</h3>
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
-                {animenews.map((news,index)=>(
-                  <div key={index} className="bg-[#0d0d0d] font-black tracking-widest   p-5 border border-white/20">
-                    <h2>{news.title}</h2>
-                    {/* <p>{news.excerpt}</p> */}
-                  </div>
-                ))}
-                 
+              <div className="flex flex-col gap-4 gap-5">
+               
+              {/* <div className="grid grid-cols-1 lg:grid-cols-3 gap-5"> */}
+                {animenews.slice(0,5).map((news,index)=>{
+                   const date = new Date(news.date).toLocaleDateString("en-US", {
+                      year: 'numeric', month: 'long', day: 'numeric'
+                })
+                  return(
+                  <a
+                        key={news.mal_id}
+                        href={news.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group relative overflow-hidden rounded-xl border border-white/10 bg-white/5 p-4 transition-all hover:bg-white/10 hover:border-red-500/50"
+                      >
+                        <div className="flex gap-4">
+                          {/* Optional Thumbnail if API provides it */}
+                          {news.images?.jpg?.image_url ? (
+                             <img 
+                               src={news.images.jpg.image_url} 
+                               alt="News" 
+                               className="h-20 w-20 flex-shrink-0 rounded-lg object-cover opacity-80 group-hover:opacity-100"
+                             />
+                          ) : (
+                             // Fallback Placeholder Icon
+                             <div className="flex h-20 w-20 flex-shrink-0 items-center justify-center rounded-lg bg-white/5">
+                               <span className="text-2xl">📰</span>
+                             </div>
+                          )}
+                          
+                          <div className="flex flex-col justify-center">
+                            <h4 className="text-lg font-bold leading-tight text-white group-hover:text-red-400 transition-colors">
+                              {news.title}
+                            </h4>
+                            <p className="mt-1 text-xs font-medium text-white/40">
+                              {date} • by {news.author_username}
+                            </p>
+                            <p className="mt-2 line-clamp-2 text-sm text-white/60 group-hover:text-white/80">
+                              {news.excerpt}
+                            </p>
+                          </div>
+                        </div>
+                      </a>
+                  // <div key={index} className="bg-[#0d0d0d] font-black tracking-widest   p-5 border border-white/20">
+                  //   <h2>{news.title}</h2>
+                  //   {/* <p>{news.excerpt}</p> */}
+                  // </div>
+                ); 
+                })}
               </div>
             </motion.div>
           </div>

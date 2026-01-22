@@ -16,9 +16,18 @@ async function getAnimeStreaming(id) {
   if (!res.ok) return { data: [] };
   return res.json();
 }
+async function getAnimeNews(id) {
+  const res = await fetch(`https://api.jikan.moe/v4/anime/${id}/news`, {
+    next: { revalidate: 3600 },
+  });
+  if (!res.ok) return { data: [] };
+  return res.json();
+}
 export default async function AnimePage({ params }) {
     const {id} = await params;
     const data = await getAnime(id);
     const streamingData = await getAnimeStreaming(id);
-    return <AnimeDetails anime={data.data} streaming={streamingData.data}/>;
+    const newsData = await getAnimeNews(id);
+    console.log(newsData);
+    return <AnimeDetails anime={data.data} streaming={streamingData.data} animenews={newsData.data}/>;
 }

@@ -3,7 +3,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 
-export default function AnimeDetails({ anime,streaming }) {
+export default function AnimeDetails({ anime,streaming,animenews }) {
   const ref = useRef(null);
   
   // Parallax Setup
@@ -65,14 +65,14 @@ export default function AnimeDetails({ anime,streaming }) {
           <div className="flex flex-col gap-6">
             <motion.div 
               variants={itemVariants}
-              className="relative aspect-[2/3] overflow-hidden rounded-2xl border border-white/10 shadow-2xl"
+              className="relative aspect-[2/3] overflow-hidden   border border-white/10 shadow-2xl"
             >
               <img
                 src={anime.images.jpg.large_image_url}
                 alt={anime.title}
                 className="h-full w-full object-cover"
               />
-              <div className="absolute top-4 left-4 rounded-lg bg-black/70 px-3 py-1 text-sm font-bold backdrop-blur-md border border-white/10">
+              <div className="absolute top-4 left-4  bg-black/70 px-3 py-1 text-sm font-bold backdrop-blur-md border border-white/10">
                 #{anime.rank ? `Ranked #${anime.rank}` : "Unranked"}
               </div>
             </motion.div>
@@ -87,7 +87,7 @@ export default function AnimeDetails({ anime,streaming }) {
                 href={anime.url}
                 target="_blank"
                 className="inline-block py-3 px-6 border-2 border-white text-xs hover:text-white hover:bg-transparent font-black uppercase tracking-widest
-                    bg-white  rounded-lg text-black transition-all"
+                    bg-white   text-black transition-all"
                 >
             View on AnimeList
             </a>
@@ -95,7 +95,7 @@ export default function AnimeDetails({ anime,streaming }) {
             href={`https://aniwatchtv.to/search?keyword=${encodeURIComponent(anime.title)}`}
             // href={`https://www.crunchyroll.com/search?from=search&q=${encodeURIComponent(anime.title)}`}
             target="_blank"
-            className="inline-block rounded-lg py-3 px-6 border-2 border-white text-xs hover:text-white hover:bg-transparent font-black uppercase tracking-widest
+            className="inline-block  py-3 px-6 border-2 border-white text-xs hover:text-white hover:bg-transparent font-black uppercase tracking-widest
                 bg-white text-black transition-all"
             >
             Aniwatch
@@ -107,7 +107,7 @@ export default function AnimeDetails({ anime,streaming }) {
                     href={service.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group flex items-center gap-2 rounded-xml border border-white/10 bg-white/5 px-5 py-3 text-sm font-bold text-white transition-all hover:bg-white/10 hover:border-red-500/50 hover:text-red-400"
+                    className="group flex items-center gap-2   border border-white/10 bg-white/5 px-5 py-3 text-sm font-bold text-white transition-all hover:bg-white/10 hover:border-red-500/50 hover:text-red-400"
                   >
                     {service.name}
                     <svg className="h-4 w-4 hidden transition-all group-hover:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -129,11 +129,11 @@ export default function AnimeDetails({ anime,streaming }) {
 
             <motion.div variants={itemVariants} className="flex flex-wrap gap-2">
               {anime.genres?.map((g) => (
-                <span key={g.mal_id} className="rounded-full bg-white/10 px-4 py-1.5 text-sm font-medium hover:bg-white/20 transition-colors cursor-default">
+                <span key={g.mal_id} className="bg-white/10 px-4 py-1.5 text-sm font-medium hover:bg-white/20 transition-colors cursor-default">
                   {g.name}
                 </span>
               ))}
-              <span className="rounded-full border border-white/20 px-4 py-1.5 text-sm font-medium text-white/60">
+              <span className="border border-white/20 px-4 py-1.5 text-sm font-medium text-white/60">
                 {anime.rating}
               </span>
             </motion.div>
@@ -146,7 +146,7 @@ export default function AnimeDetails({ anime,streaming }) {
             {anime.trailer?.embed_url && (
               <motion.div variants={itemVariants} className="mt-8">
                 <h3 className="text-xl font-bold mb-4">Trailer</h3>
-                <div className="aspect-video w-full overflow-hidden rounded-xl border border-white/10 shadow-2xl">
+                <div className="aspect-video w-full overflow-hidden  border border-white/10 shadow-2xl">
                   <iframe
                     src={`${anime.trailer.embed_url}?autoplay=0`}
                     className="h-full w-full"
@@ -156,6 +156,19 @@ export default function AnimeDetails({ anime,streaming }) {
                 </div>
               </motion.div>
             )}
+            
+            <motion.div variants={itemVariants} className="mt-8">
+              <h3 className="text-xl font-bold mb-4">News</h3>
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
+                {animenews.map((news,index)=>(
+                  <div key={index} className="bg-[#0d0d0d] font-black tracking-widest   p-5 border border-white/20">
+                    <h2>{news.title}</h2>
+                    {/* <p>{news.excerpt}</p> */}
+                  </div>
+                ))}
+                 
+              </div>
+            </motion.div>
           </div>
         </div>
       </motion.div>
@@ -166,7 +179,7 @@ export default function AnimeDetails({ anime,streaming }) {
 // Simple internal component for styling stats
 function StatBox({ label, value, star }) {
   return (
-    <div className="flex flex-col items-center justify-center gap-1 rounded-xl border border-white/10 bg-white/5 p-4 text-center hover:bg-white/10 transition-colors">
+    <div className="flex flex-col items-center justify-center gap-1  border border-white/10 bg-white/5 p-4 text-center hover:bg-white/10 transition-colors">
       <span className="text-xs font-bold uppercase tracking-wider text-white/40">{label}</span>
       <span className="flex items-center gap-1 text-xl font-black">
         {value}

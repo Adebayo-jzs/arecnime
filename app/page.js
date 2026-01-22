@@ -5,6 +5,7 @@ import { Search } from "@mui/icons-material";
 import AnimeCard from "@/components/AnimeCard";
 import HeroCarousel from "@/components/HeroCarousel";
 // import { useEffect,useState } from "react";
+ 
 export default  async function Home() {
   // const [animeList,setAnimeList] = useState([]);
 

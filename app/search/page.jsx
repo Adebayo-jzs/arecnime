@@ -16,6 +16,7 @@
 
 import { useState } from "react";
 import AnimeCard from "@/components/AnimeCard";
+import { Search } from "@mui/icons-material";
 export default function Searchpage() {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
@@ -43,7 +44,7 @@ export default function Searchpage() {
                 {/* Search Results  */}
                 {query?`Search results for ${query}`:"Search"}
             </h2>
-            <form onSubmit={handleSearch} className="mb-15">
+            <form onSubmit={handleSearch} className="mb-15 flex gap-5">
         <input
           type="text"
           placeholder="Search anime..."
@@ -51,6 +52,7 @@ export default function Searchpage() {
           onChange={(e) => setQuery(e.target.value)}
           className="w-full  bg-neutral-900 px-5 py-4 text-white text-lg outline-none focus:ring-2 focus:ring-white/20"
         />
+        <button type="submit" className="bg-white aspect-[1/1] px-5 cursor-pointer"><Search/></button>
       </form>
       {loading && (
         <p className="mt-10 text-center text-white/50">Searching...</p>

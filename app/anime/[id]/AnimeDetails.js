@@ -3,7 +3,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 
-export default function AnimeDetails({ anime }) {
+export default function AnimeDetails({ anime,streaming }) {
   const ref = useRef(null);
   
   // Parallax Setup
@@ -98,8 +98,24 @@ export default function AnimeDetails({ anime }) {
             className="inline-block rounded-lg py-3 px-6 border-2 border-white text-xs hover:text-white hover:bg-transparent font-black uppercase tracking-widest
                 bg-white text-black transition-all"
             >
-            watch
+            Aniwatch
             </a>
+            <div className="flex flex-wrap gap-3">
+                {streaming.map((service, index) => (
+                  <a
+                    key={index}
+                    href={service.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex items-center gap-2 rounded-xml border border-white/10 bg-white/5 px-5 py-3 text-sm font-bold text-white transition-all hover:bg-white/10 hover:border-red-500/50 hover:text-red-400"
+                  >
+                    {service.name}
+                    <svg className="h-4 w-4 hidden transition-all group-hover:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                  </a>
+                ))}
+              </div>
           </div>
 
           {/* RIGHT COLUMN: Info & Trailer */}

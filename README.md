@@ -11,4 +11,4 @@
 
 **Adedeji Samod**
 * Twitter: [@theebayo](https://x.com/theebayo)
-* Github: [@yourgithubusername](https://github.com/Adebayo-jzs)
+* Github: [@Adebayo-jzs](https://github.com/Adebayo-jzs)

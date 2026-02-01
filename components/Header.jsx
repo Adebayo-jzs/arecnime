@@ -23,17 +23,17 @@ export default function Header(){
       <div className="flex items-center justify-between">
         {/* Logo / Brand */}
         {/* <div class="fixed top-8 left-8 z-50"> */}
-        <Link href="/" className="  flex items-center justify-center font-display font-black text-2xl tracking-tighter  ">
+        <Link href="/" className="ojuju flex items-center justify-center font-display font-black text-3xl tracking-tighter  ">
             Arecnime
         </Link>
         {/* </div> */}
 
-        {/* Desktop Links */}
+        {/* Desktop Links
         <div className="hidden md:flex items-center opacity-0 gap-8 uppercase font-bold">
           <NavLink href="#about">About</NavLink>
           <NavLink href="#projects">Projects</NavLink>
           <NavLink href="#experience">Education</NavLink>
-        </div>
+        </div> */}
 
         {/* CTA Button */}
         <Link

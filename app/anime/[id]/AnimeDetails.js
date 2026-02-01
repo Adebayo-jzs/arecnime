@@ -122,7 +122,7 @@ export default function AnimeDetails({ anime,streaming,animenews }) {
           <div className="flex flex-col gap-8">
             <motion.div variants={itemVariants}>
               <h1 className="text-4xl font-black leading-tight tracking-tight md:text-7xl">
-                {anime.title}
+                {anime.title_english || anime.title}
               </h1>
               <h2 className="mt-2 text-xl text-white/50">{anime.title_japanese}</h2>
             </motion.div>

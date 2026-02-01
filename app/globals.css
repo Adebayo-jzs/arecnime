@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Elms+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&amp;family=Outfit:wght@300;400;700;900&amp;display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ojuju:wght@200..800&display=swap');
 @import "tailwindcss";
 
 :root {
@@ -10,8 +11,8 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* --font-sans: var(--font-geist-sans); */
+  /* --font-mono: var(--font-geist-mono); */
 }
 
 @media (prefers-color-scheme: dark) {
@@ -27,8 +28,19 @@ body {
   background-color: #030712;
   /* font-family: Arial, Helvetica, sans-serif; */
   font-family: 'Outfit',sans-serif;
+  /* font-family: 'Ojuju',sans-serif; */
+  /* font-family: "Ojuju", sans-serif; */
 }
-
+.ojuju{
+  font-family: "Ojuju", sans-serif;
+  font-weight: 900; 
+}
+h1{
+  font-family: "Ojuju", sans-serif;
+}
+h2,h3{
+  font-family: "Ojuju", sans-serif;
+}
 @layer utilities {
 }
 .scrollbar-hide {

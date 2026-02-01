@@ -28,6 +28,6 @@ export default async function AnimePage({ params }) {
     const data = await getAnime(id);
     const streamingData = await getAnimeStreaming(id);
     const newsData = await getAnimeNews(id);
-    console.log(newsData);
+    // console.log(newsData);
     return <AnimeDetails anime={data.data} streaming={streamingData.data} animenews={newsData.data}/>;
 }

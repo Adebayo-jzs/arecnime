@@ -139,13 +139,13 @@ export default function AnimeDetails({ anime,streaming,animenews }) {
             </motion.div>
 
             <motion.div variants={itemVariants} className="prose prose-invert max-w-none">
-              <h3 className="text-xl font-bold mb-4">Synopsis</h3>
+              <h3 className="text-2xl font-bold mb-4">Synopsis</h3>
               <p className="text-lg leading-relaxed text-white/70">{anime.synopsis}</p>
             </motion.div>
 
             {anime.trailer?.embed_url && (
               <motion.div variants={itemVariants} className="mt-8">
-                <h3 className="text-xl font-bold mb-4">Trailer</h3>
+                <h3 className="text-2xl font-bold mb-4">Trailer</h3>
                 <div className="aspect-video w-full overflow-hidden  border border-white/10 shadow-2xl">
                   <iframe
                     src={`${anime.trailer.embed_url}?autoplay=0`}
@@ -158,7 +158,7 @@ export default function AnimeDetails({ anime,streaming,animenews }) {
             )}
             
             <motion.div variants={itemVariants} className="mt-8">
-              <h3 className="text-xl font-bold mb-4">News</h3>
+              <h3 className="text-2xl font-bold mb-4">News</h3>
               <div className="flex flex-col gap-4 gap-5">
                
               {/* <div className="grid grid-cols-1 lg:grid-cols-3 gap-5"> */}

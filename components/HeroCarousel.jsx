@@ -39,7 +39,7 @@ export default function HeroCarousel({ animeList }) {
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.4 }}
             >
-                <h1 className="text-5xl font-black">{active.title}</h1>
+                <h1 className="text-5xl font-black ojuju">{active.title}</h1>
                 <p className="mt-4 text-white/70 line-clamp-4">
                 {active.synopsis}
                 </p>

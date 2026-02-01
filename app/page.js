@@ -26,7 +26,7 @@ export default  async function Home() {
    
 
   return (
-    <div className="flex flex-col min-h-screen items-center justify-center bg-black font-sans  ">
+    <div className="flex flex-col min-h-screen items-center justify-center bg-black ">
       <HeroCarousel animeList={animeList}/>
       <main className="max-w-9xl min-h-screen w-full    items-center justify-between py-32 px-5 md:px-16  sm:items-start">
          <h2 className="text-4xl md:text-5xl  mb-7 font-black tracking-tight flex items-center gap-4 text-white">

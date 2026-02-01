@@ -17,7 +17,7 @@ export default function AnimeCard({anime}) {
         <div className="absolute bottom-6 left-4 md:left-6 md:bottom-10 pr-6 transition-all">
             
             <h2 className="text-3xl transition-all md:text-4xl font-black text-white uppercase tracking-tighter leading-none">
-            {anime.title}
+            {anime.title_english || anime.title}
             </h2>
             <p className="
                 translate-y-8 group-hover:translate-y-0

@@ -1,5 +1,20 @@
-export default function AnimeCard({anime}) {
-    return(
+"use client";
+import { BookmarkBorderOutlined, Bookmark } from "@mui/icons-material";
+import { useWatchlist } from "@/app/watchlist/FavContext";
+export default function AnimeCard({ anime }) {
+    const { watchlistItems, addToWatchlist, removeFromWatchlist } = useWatchlist();
+    const isInWatchlist = watchlistItems.some((p) => p.id === anime.mal_id);
+    
+    const handleWatchlistClick = () => {
+        if (isInWatchlist) {
+            removeFromWatchlist(anime.mal_id);
+        } else {
+            // the context expects an object with `id` matching anime.mal_id
+            addToWatchlist({ id: anime.mal_id, ...anime });
+        }
+    };
+
+    return (
 
     
     <div className="relative overflow-hidden aspect-[4/6] xl:aspect-[4/5] bg-neutral-900 group mb-6  border border-white/10 " key={anime.mal_id}>
@@ -26,7 +41,7 @@ export default function AnimeCard({anime}) {
                 opacity-0 group-hover:opacity-100 absolute group-hover:relative">
                 {anime.synopsis}
             </p>
-            <div className="flex gap-4 mt-4">
+            <div className="flex justify-between mt-4">
                 <a
                 href={`/anime/${anime.mal_id}`}
                 target="_blank"
@@ -35,7 +50,13 @@ export default function AnimeCard({anime}) {
                 >
                 details
                 </a>
-                
+                <button
+                    className="text-white hover:scale-110 transition-transform"
+                    onClick={handleWatchlistClick}
+                    aria-label={isInWatchlist ? "Remove from watchlist" : "Add to watchlist"}
+                >
+                    {isInWatchlist ? <Bookmark fontSize="large"  className="text-pink-400"/> : <BookmarkBorderOutlined fontSize="large"/>}
+                </button>
             </div>
         </div>
     </div> 

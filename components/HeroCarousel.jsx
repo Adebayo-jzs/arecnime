@@ -1,10 +1,23 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";    
+import { useState } from "react";   
+import { BookmarkBorderOutlined, Bookmark } from "@mui/icons-material";
+import { useWatchlist } from "@/app/watchlist/FavContext";
 
 export default function HeroCarousel({ animeList }) {
   const [active, setActive] = useState(animeList[0]);
+  const { watchlistItems, addToWatchlist, removeFromWatchlist } = useWatchlist();
+    const isInWatchlist = watchlistItems.some((p) => p.id === active.mal_id);
+    
+    const handleWatchlistClick = () => {
+        if (isInWatchlist) {
+            removeFromWatchlist(active.mal_id);
+        } else {
+            // the context expects an object with `id` matching anime.mal_id
+            addToWatchlist({ id: active.mal_id, ...active });
+        }
+    }; 
 
   return (
     <section className="relative h-[90vh] w-full overflow-visible bg-black px-5 md:px-10">
@@ -43,14 +56,23 @@ export default function HeroCarousel({ animeList }) {
                 <p className="mt-4 text-white/70 line-clamp-4">
                 {active.synopsis}
                 </p>
+                <div className="flex gap-3 mt-4 items-center">
                 <a
-                        href={`/anime/${active.mal_id}`}
-                        target="_blank"
-                        className="inline-block mt-4 py-3 px-6 border-2 border-white text-xs text-white font-black uppercase tracking-widest
-                          hover:bg-white hover:text-black transition-all"
-                      >
-                        Details
-                      </a>
+                  href={`/anime/${active.mal_id}`}
+                  target="_blank"
+                  className="py-3 px-6 border-2 border-white text-xs text-white font-black uppercase tracking-widest
+                    hover:bg-white hover:text-black transition-all"
+                >
+                  Details
+                </a>
+                <button
+                  className="text-white hover:scale-110 border-2 border-white rounded-full p-1 transition-transform"
+                  onClick={handleWatchlistClick}
+                    aria-label={isInWatchlist ? "Remove from watchlist" : "Add to watchlist"}
+                >
+                  {isInWatchlist ? <Bookmark fontSize="large"  className=""/> : <BookmarkBorderOutlined fontSize="large"/>}
+                </button>
+                </div>
             </motion.div>
         </AnimatePresence>
       </div>

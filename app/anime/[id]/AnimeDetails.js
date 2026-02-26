@@ -2,8 +2,22 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import { BookmarkBorderOutlined, Bookmark ,BookmarkAdd,BookmarkRemove } from "@mui/icons-material";
+import { useWatchlist } from "@/app/watchlist/FavContext";
 
 export default function AnimeDetails({ anime,streaming,animenews }) {
+  const { watchlistItems, addToWatchlist, removeFromWatchlist } = useWatchlist();
+  const isInWatchlist = watchlistItems.some((p) => p.id === anime.mal_id);
+    
+  const handleWatchlistClick = () => {
+    if (isInWatchlist) {
+        removeFromWatchlist(anime.mal_id);
+    } else {
+        // the context expects an object with `id` matching anime.mal_id
+        addToWatchlist({ id: anime.mal_id, ...anime });
+    }
+  };
+
   const ref = useRef(null);
   
   // Parallax Setup
@@ -75,6 +89,15 @@ export default function AnimeDetails({ anime,streaming,animenews }) {
               <div className="absolute top-4 left-4  bg-black/70 px-3 py-1 text-sm font-bold backdrop-blur-md border border-white/10">
                 #{anime.rank ? `Ranked #${anime.rank}` : "Unranked"}
               </div>
+              <div className="absolute top-4 right-4">
+                <button
+                    className="text-white hover:scale-110 transition-transform"
+                    onClick={handleWatchlistClick}
+                    aria-label={isInWatchlist ? "Remove from watchlist" : "Add to watchlist"}
+                >
+                    {isInWatchlist ? <Bookmark fontSize="large"  className="text-pink-400"/> : <BookmarkBorderOutlined fontSize="large"/>}
+                </button>
+              </div>
             </motion.div>
 
             <motion.div variants={itemVariants} className="grid grid-cols-2 gap-4">
@@ -83,6 +106,15 @@ export default function AnimeDetails({ anime,streaming,animenews }) {
               <StatBox label="Members" value={anime.members?.toLocaleString()} />
               <StatBox label="Episodes" value={anime.episodes || "?"} />
             </motion.div>
+            <button
+              className=" py-3 px-6 border-2 border-white text-xs hover:text-white hover:bg-transparent font-black uppercase flex items-center gap-2 tracking-widest
+                    bg-white text-left  text-black transition-all"
+              onClick={handleWatchlistClick}
+              aria-label={isInWatchlist ? "Remove from watchlist" : "Add to watchlist"}
+            >
+              <span> {isInWatchlist ? "Remove from watchlist" : "Add to watchlist"}</span>
+              <span>{isInWatchlist ? <BookmarkRemove fontSize="small"  className="text-pnk-400"/> : <BookmarkAdd fontSize="small"/>}</span>
+            </button>
             <a
                 href={anime.url}
                 target="_blank"

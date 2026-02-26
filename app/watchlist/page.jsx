@@ -29,7 +29,8 @@ export default function Watchlist() {
                             <p className="text-gray-400">{watchlistItems.length} anime in watchlist</p>
                             <button
                                 onClick={() => clearWatchlist()}
-                                className="py-2 px-4 bg-red-600 hover:bg-red-700 text-white font-bold uppercase transition"
+                                className="inline-block py-3 px-6 bg-red-600 text-xs text-white font-black uppercase tracking-widest
+                    hover:bg-red-700   transition-all"
                             >
                                 Clear All
                             </button>

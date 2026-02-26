@@ -33,7 +33,7 @@ export default function SearchInput() {
         value={text}
         onChange={(e) => setText(e.target.value)}
         placeholder="Search for anime..."
-        className="w-full rounded-2xl border border-white/10 bg-white/5 py-4 pl-12 pr-4 text-white placeholder-white/40 backdrop-blur-md transition-all focus:border-red-500/50 focus:bg-white/10 focus:outline-none focus:ring-1 focus:ring-red-500/50"
+        className="w-full rounded-2xl border border-white/10 bg-white/5 py-4 pl-12 pr-4 text-white placeholder-white/40 backdrop-blur-md transition-all focus:border-pink-500/50 focus:bg-white/10 focus:outline-none focus:ring-1 focus:ring-pink-500/50"
       />
     </div>
   );

@@ -51,7 +51,7 @@ export default function AnimeDetails({ anime,streaming,animenews }) {
   };
 
   return (
-    <div ref={ref} className="relative min-h-screen w-full bg-black text-white selection:bg-red-500/30">
+    <div ref={ref} className="relative min-h-screen w-full bg-black text-white selection:bg-pink-500/30">
       
       {/* 1. PARALLAX BACKDROP */}
       <motion.div 
@@ -139,7 +139,7 @@ export default function AnimeDetails({ anime,streaming,animenews }) {
                     href={service.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group flex items-center gap-2   border border-white/10 bg-white/5 px-5 py-3 text-sm font-bold text-white transition-all hover:bg-white/10 hover:border-red-500/50 hover:text-red-400"
+                    className="group flex items-center gap-2   border border-white/10 bg-white/5 px-5 py-3 text-sm font-bold text-white transition-all hover:bg-white/10 hover:border-pink-500/50 hover:text-pink-400"
                   >
                     {service.name}
                     <svg className="h-4 w-4 hidden transition-all group-hover:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -204,7 +204,7 @@ export default function AnimeDetails({ anime,streaming,animenews }) {
                         href={news.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group relative overflow-hidden rounded-xl border border-white/10 bg-white/5 p-4 transition-all hover:bg-white/10 hover:border-red-500/50"
+                        className="group relative overflow-hidden rounded-xl border border-white/10 bg-white/5 p-4 transition-all hover:bg-white/10 hover:border-pink-500/50"
                       >
                         <div className="flex gap-4">
                           {/* Optional Thumbnail if API provides it */}
@@ -222,7 +222,7 @@ export default function AnimeDetails({ anime,streaming,animenews }) {
                           )}
                           
                           <div className="flex flex-col justify-center">
-                            <h4 className="text-lg font-bold leading-tight text-white group-hover:text-red-400 transition-colors">
+                            <h4 className="text-lg font-bold leading-tight text-white group-hover:text-pink-400 transition-colors">
                               {news.title}
                             </h4>
                             <p className="mt-1 text-xs font-medium text-white/40">

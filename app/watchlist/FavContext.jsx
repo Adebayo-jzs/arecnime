@@ -6,8 +6,7 @@ const initialWatchlist = [
 
 ];
 
-export const WatchlistProvider = ({ children }) => {
-    // Initialize state from local storage to avoid race conditions
+export const WatchlistProvider = ({ children }) => { 
     const [watchlistItems, setWatchlistItems] = useState(() => {
         if (typeof window === 'undefined') return [];
         try {
